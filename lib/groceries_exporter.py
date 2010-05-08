@@ -29,13 +29,27 @@ class GroceriesExporter:
         return
 
     def convert_groceries(self, groceries_list):
-        """ converts a groceries yaml list into the
+        """ converts a groceries list into the
             format needed by groceries.app
-        """
-        ret = {}
-        for aisles in groceries_list.keys():
-            for items in groceries_list[aisles]:
-                try:
 
+            Params: groceries_list
+            Format: {'aisle1': ['item1', 'item2'],
+                     'aisle2': ['item3', 'item4']}
+
+            Return:
+                array of groceries in correct format
+        """
+        ret = []
+        for aisles in groceries_list.keys():
+            for item in groceries_list[aisles]:
+                try:
+                    aisle = self.aisles_master[aisles]
+                except KeyError:
+                    aisle = None
+                new_item = {}
+                if aisle:
+                    new_item["aisle"] = aisle
+                new_item["name"] = items
+                ret.append(new_item)
 
         return ret
