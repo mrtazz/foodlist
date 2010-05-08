@@ -11,11 +11,14 @@ class GroceriesExporter:
         for Groceries.app
     """
     def __init__(self, aisles_json_file):
-        aisles_json = json.loads(open(aisles_json_file).read())
+        try:
+            aisles_json = json.loads(open(aisles_json_file).read())
+        except IOError:
+            return -1
         self.aisles_raw = aisles_json["aisles"]
-        self.aisles = {}
+        self.aisles_master = {}
         for aisle in aisles_raw:
-            aisles[aisle["name"]] = aisle["id"]
+            aisles_master[aisle["name"]] = aisle["id"]
 
     def set_groceries(self, groceries):
         """ set groceries list """
