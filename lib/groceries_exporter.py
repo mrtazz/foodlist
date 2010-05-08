@@ -24,9 +24,17 @@ class GroceriesExporter:
         """ set groceries list """
         self.groceries = groceries
 
-    def export_list(self, groceries, filepath):
-        """ export groceries to given file """
-        return
+    def export_list(self, groceries, name = "Groceries"):
+        """ export groceries to correct format and
+            returns it as string
+        """
+        data = {}
+        grocs = convert_groceries(groceries)
+        data["items"] = groceries
+        data["name"] = name
+        data["aisles"] = self.aisles_raw
+
+        return json.dumps(data)
 
     def convert_groceries(self, groceries_list):
         """ converts a groceries list into the
