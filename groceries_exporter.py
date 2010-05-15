@@ -7,6 +7,7 @@
 
 import yaml
 import sys
+import pystache
 
 from os.path import expanduser
 from optparse import OptionParser
@@ -38,13 +39,26 @@ def main():
         groceries_file = GROCERIES_PATH
     else:
         groceries_file = options.groceries_json
-    print groceries_file
+
+    if not options.template:
+        template = open(GROCERIES_TEMPLATE).read()
+    else:
+        template = open(options.template).read()
 
     gc = GroceriesExporter(groceries_file)
     if gc == None:
         sys.exit(-1)
     groceries = yaml.safe_load(open(args[0]).read())
-    print gc.export_list(groceries)
+    data_json = gc.export_list(groceries)
+    items = gc.data['items']
+    ctx = {}
+    ctx['groceries'] = data_json
+    ctx['listname'] = gc.data['name']
+    ctx['itemcount'] = len(gc.data['items'])
+    ctx["items"] = gc.list_data
+    output = pystache.render(template, ctx)
+    print output
+
 
 if __name__ == '__main__':
     main()
