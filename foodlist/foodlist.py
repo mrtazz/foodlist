@@ -8,7 +8,7 @@ import sys
 from urllib import quote
 
 
-class GroceriesExporter:
+class FoodList:
     """ Exporting a YAML groceries list as an import
         for Groceries.app
     """

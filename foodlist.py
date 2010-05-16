@@ -11,11 +11,11 @@ import pystache
 
 from os.path import expanduser
 from optparse import OptionParser
-from lib.__version__ import __version__
-from lib.groceries_exporter import GroceriesExporter
+from foodlist.__version__ import __version__
+from foodlist.foodlist import FoodList
 
-GROCERIES_PATH = expanduser("~")+"/.groceries_exporter/groceries.json"
-GROCERIES_TEMPLATE = expanduser("~")+"/.groceries_exporter/groceries.mustache"
+GROCERIES_PATH = expanduser("~")+"/.foodlist/groceries.json"
+GROCERIES_TEMPLATE = expanduser("~")+"/.foodlist/groceries.mustache"
 
 
 def init_parser():
@@ -45,7 +45,7 @@ def main():
     else:
         template = open(options.template).read()
 
-    gc = GroceriesExporter(groceries_file)
+    gc = FoodList(groceries_file)
     if gc == None:
         sys.exit(-1)
     groceries = yaml.safe_load(open(args[0]).read())
