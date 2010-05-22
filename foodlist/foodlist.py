@@ -1,5 +1,5 @@
 """
-    groceries export
+    foodlist
     module to produce Groceries.app importable output
 """
 
