@@ -28,10 +28,6 @@ class FoodList:
             self.aisles_master[aisle["name"]] = {"id" : aisle["id"],
                                                  "image" : aisle["imageName"]}
 
-    def set_groceries(self, groceries):
-        """ set groceries list """
-        self.groceries = groceries
-
     def export_list(self, groceries, name = "Imported Groceries"):
         """ export groceries to correct format and
             returns it as string
