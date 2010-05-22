@@ -1,0 +1,23 @@
+<html>
+  <body bgcolor="#FFFFFF">
+    <div>
+      <div id="content">
+        <div id="attachment">
+          <a href="groceries://import?from=juma&amp;data={{ groceries }}">
+            Import: {{ listname }} [{{ itemcount }} items]
+          </a>
+        </div>
+        <div id="shoppinglist">
+          <ul>
+          {{# items}}
+            <li>
+                 {{ name }}
+            </li>
+          {{/ items}}
+          </ul>
+        </div>
+      <div>
+    </div>
+  </body>
+</html>
+
