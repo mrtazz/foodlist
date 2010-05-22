@@ -34,7 +34,7 @@ class FoodList:
         """
         if not self.data:
             self.build_groceries_data(groceries, name)
-        return quote(json.dumps(self.data))
+        return (self.list_data, quote(json.dumps(self.data)))
 
     def build_groceries_data(self, groceries, name = "Imported Groceries"):
         """ build the complete groceries data set """
