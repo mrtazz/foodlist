@@ -11,8 +11,7 @@ import pystache
 
 from os.path import expanduser
 from optparse import OptionParser
-from foodlist.__version__ import __version__
-from foodlist.foodlist import FoodList
+import foodlist as fl
 
 GROCERIES_PATH = expanduser("~")+"/.foodlist/groceries.json"
 GROCERIES_TEMPLATE = expanduser("~")+"/.foodlist/groceries.mustache"
@@ -22,11 +21,13 @@ def init_parser():
     """method to init options parser"""
         # initialize parser
     usage = "usage: %prog [-j groceries_dump] [-t template] groceries.yaml"
-    parser = OptionParser(usage, version="%prog "+__version__)
+    parser = OptionParser(usage, version="%prog "+fl.__version__)
     parser.add_option("-j", "--groceries_dump", action="store",
                       dest="groceries_json", help="groceries json dump")
     parser.add_option("-t", "--template", action="store", dest="template",
                       help="mustache template to fill")
+    parser.add_option("-n", "--name", action="store", dest="name",
+                      help="name of the list")
 
     return parser.parse_args()
 
@@ -45,17 +46,20 @@ def main():
     else:
         template = open(options.template).read()
 
-    gc = FoodList(groceries_file)
-    if gc == None:
+    groc = fl.FoodList(groceries_file)
+    if groc == None:
         sys.exit(-1)
     groceries = yaml.safe_load(open(args[0]).read())
-    data_json = gc.export_list(groceries)
-    items = gc.data['items']
+    if not options.name:
+        (list_data, data_json) = groc.export_list(groceries)
+    else:
+        (list_data, data_json) = groc.export_list(groceries, options.name)
+
     ctx = {}
     ctx['groceries'] = data_json
-    ctx['listname'] = gc.data['name']
-    ctx['itemcount'] = len(gc.data['items'])
-    ctx["items"] = gc.list_data
+    ctx['listname'] = groc.data['name']
+    ctx['itemcount'] = len(groc.data['items'])
+    ctx["items"] = list_data
     output = pystache.render(template, ctx)
     print output
 
