@@ -5,13 +5,22 @@
     compatible shopping lists
 """
 
-import yaml
 import sys
-import pystache
+import foodlist as fl
 
 from os.path import expanduser
 from optparse import OptionParser
-import foodlist as fl
+
+try:
+    import yaml
+except ImportError:
+    print "Yaml module not available."
+    sys.exit(-1)
+
+try:
+    import pystache
+except ImportError:
+    pystache = None
 
 GROCERIES_PATH = expanduser("~")+"/.foodlist/groceries.json"
 GROCERIES_TEMPLATE = expanduser("~")+"/.foodlist/groceries.mustache"
@@ -20,14 +29,18 @@ GROCERIES_TEMPLATE = expanduser("~")+"/.foodlist/groceries.mustache"
 def init_parser():
     """method to init options parser"""
         # initialize parser
-    usage = "usage: %prog [-j groceries_dump] [-t template] groceries.yaml"
+    usage = "usage: %prog [-b base_data_dump] [-t template] [-n name] [-f \
+format] groceries.yaml"
+
     parser = OptionParser(usage, version="%prog "+fl.__version__)
-    parser.add_option("-j", "--groceries_dump", action="store",
-                      dest="groceries_json", help="groceries json dump")
+    parser.add_option("-b", "--base-data", action="store",
+                      dest="base_data", help="base data dump file")
     parser.add_option("-t", "--template", action="store", dest="template",
                       help="mustache template to fill")
     parser.add_option("-n", "--name", action="store", dest="name",
                       help="name of the list")
+    parser.add_option("-f", "--format", action="store", dest="format",
+                      help="output format")
 
     return parser.parse_args()
 
@@ -36,32 +49,35 @@ def main():
     """
     (options, args) = init_parser()
 
-    if not options.groceries_json:
-        groceries_file = GROCERIES_PATH
+    if not options.base_data:
+        base_data = GROCERIES_PATH
     else:
-        groceries_file = options.groceries_json
+        base_data = options.groceries_json
 
-    if not options.template:
-        template = open(GROCERIES_TEMPLATE).read()
-    else:
-        template = open(options.template).read()
+    try:
+        if not options.template:
+            template = open(GROCERIES_TEMPLATE).read()
+        else:
+            template = open(options.template).read()
 
-    groc = fl.FoodList(groceries_file)
-    if groc == None:
+    except IOError:
+        template = None
+
+    try:
+        groceries = yaml.safe_load(open(args[0]).read())
+    except:
+        print "No valid list data given."
         sys.exit(-1)
-    groceries = yaml.safe_load(open(args[0]).read())
-    if not options.name:
-        (list_data, data_json) = groc.export_list(groceries)
-    else:
-        (list_data, data_json) = groc.export_list(groceries, options.name)
 
-    ctx = {}
-    ctx['groceries'] = data_json
-    ctx['listname'] = groc.data['name']
-    ctx['itemcount'] = len(groc.data['items'])
-    ctx["items"] = list_data
-    output = pystache.render(template, ctx)
-    print output
+    if not options.name:
+        ctx = fl.export_list(groceries, json_data=base_data)
+    else:
+        ctx = fl.export_list(groceries, options.name, json_data=base_data)
+
+    if pystache is not None and template is not None:
+        print pystache.render(template, ctx)
+    else:
+        print ctx
 
 
 if __name__ == '__main__':
