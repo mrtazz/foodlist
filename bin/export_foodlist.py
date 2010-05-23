@@ -49,11 +49,14 @@ def main():
     """
     (options, args) = init_parser()
 
-    if not options.base_data:
-        base_data = GROCERIES_PATH
-    else:
-        base_data = options.groceries_json
+    # params dict with default values
+    params = {
+                "format" : "groceries.app",
+                "name" : "Imported List",
+                "base_data" : GROCERIES_PATH
+             }
 
+    # try to read template
     try:
         if not options.template:
             template = open(GROCERIES_TEMPLATE).read()
@@ -63,17 +66,27 @@ def main():
     except IOError:
         template = None
 
+    # try to read yaml data, if sth. goes wrong, abort
     try:
         groceries = yaml.safe_load(open(args[0]).read())
     except:
         print "No valid list data given."
         sys.exit(-1)
 
-    if not options.name:
-        ctx = fl.export_list(groceries, json_data=base_data)
-    else:
-        ctx = fl.export_list(groceries, options.name, json_data=base_data)
+    # replace dict values with command line arguments
+    if options.base_data is not None:
+        params["base_data"] = options.base_data
 
+    if options.format is not None:
+        params["format"] = options.format
+
+    if options.name is not None:
+        params["name"] = options.name
+
+    # get the context from the list parser
+    ctx = fl.export_list(groceries, **params)
+
+    # print parsed template if available, otherwise print ctx
     if pystache is not None and template is not None:
         print pystache.render(template, ctx)
     else:
