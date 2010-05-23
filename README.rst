@@ -21,12 +21,16 @@ pyyaml for input parsing and pystache for filling the output template. If
 pystache is not available or no template was given, the context object is
 simply printed onto the screen.
 
+::
+
     pip install pyyaml
     pip install pystache
 
 Usage:
 -------
 Create a yaml list like this:
+
+::
 
     aisle:
     - food
@@ -58,10 +62,46 @@ Additionally it is possible to pass a name and the format:
 
     export_foodlist.py -n "My awesome list" -f "groceries.app" list.yaml
 
+Expansion:
+----------
+Adding new formats is rather easy. Just add a new converter method with the
+signature:
+
+    def convert_groceries_app(self, groceries_list, \*\*kwargs)
+
+The parameters are:
+* groceries_list = the object parsed from the yaml list
+* \*\*kwargs additional arguments like base data path, etc
+
+::
+   kwargs = {
+                "format" : "desired format",
+                "name" : "name of the list",
+                "base_data" : "path to base data file"
+            }
+
+
+Then add it to the listformats dict:
+
+    listformats = {'keyword': self.new_converter_method}
+
+And that's about it.
+
+Caveats:
+--------
+Since I don't know if it is okay (license-wise) to bundle json data
+from Groceries.app here, no data is included. However it is rather
+easy to get a json dump yourself. Just export a shopping list from
+Groceries.app and search in the plain email text for:
+
+  groceries://import?from=YOURIPHONE&amp;data=
+
+The part after data is the json data which needs to be fed to the application.
+
 TODO:
 ------
-* more (or any for that matter) test cases and error handling
-* add more formats
+* more (or any for that matter) test cases
+* more formats
 
 Thanks:
 -------
