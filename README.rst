@@ -67,7 +67,7 @@ Expansion:
 Adding new formats is rather easy. Just add a new converter method with the
 signature:
 
-    def convert_groceries_app(self, groceries_list, \*\*kwargs)
+    def new_converter_method(self, groceries_list, \*\*kwargs)
 
 The parameters are:
 
