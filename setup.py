@@ -19,7 +19,7 @@ if sys.argv[-1] == "publish":
 
 setup(name = "foodlist",
       version = foodlist.__version__,
-      description = "Python tool to convert YAML shopping list in different formats",
+      description = "Python tool to convert YAML shopping list into different formats",
       long_description = (open("README.rst").read() + "\n\n" + open("HISTORY.rst").read()),
       author = "Daniel Schauenberg",
       author_email = "d@unwiredcouch.com",
