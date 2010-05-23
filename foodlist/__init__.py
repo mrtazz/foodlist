@@ -1,4 +1,5 @@
 # encoding: utf-8
+""" package init for meta data and method export """
 
 from foodlist import FoodList
 
