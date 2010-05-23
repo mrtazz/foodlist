@@ -18,7 +18,7 @@ class FoodList:
                               "groceries.app" : self.convert_groceries_app
                            }
 
-    def export_list(self, groceries, name, format_, **kwargs):
+    def export_list(self, groceries, **kwargs):
         """ export groceries list
 
             Parameters:
@@ -29,7 +29,8 @@ class FoodList:
             Returns:
                 Context for requested format
         """
-        return self.listformats.get(format_)(groceries, name, **kwargs)
+        format_ = kwargs["format"]
+        return self.listformats.get(format_)(groceries, **kwargs)
 
 # converter methods for different formats
 
@@ -48,7 +49,7 @@ class FoodList:
 
         # open and parse json file
         try:
-            json_data = kwargs["json_data"]
+            json_data = kwargs["base_data"]
         except KeyError:
             raise MissingParameterError("Path to json dump of groceries.app\
  base data not provided.")

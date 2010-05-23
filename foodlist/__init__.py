@@ -7,7 +7,6 @@ __author__ = "Daniel Schauenberg"
 __version__ = "0.1.0"
 __license__ = "MIT"
 
-def export_list(groceries, name="Imported List", format_="groceries.app",
-                **kwargs):
+def export_list(groceries, **kwargs):
     """ export_list method export for easy access """
-    return FoodList().export_list(groceries, name, format_, **kwargs)
+    return FoodList().export_list(groceries, **kwargs)
