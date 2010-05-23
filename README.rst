@@ -70,10 +70,12 @@ signature:
     def convert_groceries_app(self, groceries_list, \*\*kwargs)
 
 The parameters are:
+
 * groceries_list = the object parsed from the yaml list
 * \*\*kwargs additional arguments like base data path, etc
 
 ::
+
    kwargs = {
                 "format" : "desired format",
                 "name" : "name of the list",
