@@ -26,6 +26,20 @@ simply printed onto the screen.
     pip install pyyaml
     pip install pystache
 
+Installation:
+-------------
+The package itself can be installed via PyPi:
+
+    pip install foodlist
+
+Or if you must:
+
+    easy_install foodlist
+
+This does not install the example data from the data folder, however. They are
+working examples, but I don't think they are useful enough to be bundled. If
+you want to use or modify these examples, feel free to do this.
+
 Usage:
 -------
 Create a yaml list like this:
