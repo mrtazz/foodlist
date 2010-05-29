@@ -1,0 +1,112 @@
+{
+ "name" : "",
+ "items" : [],
+ "aisles" : [{
+	 "imageName" : "breakfast",
+	 "name" : "Cornflakes & Müsli",
+	 "sortOrder" : 0,
+	 "id" : 5}, {
+	 "imageName" : "muffin",
+	 "name" : "Backzutaten",
+	 "sortOrder" : 1,
+	 "id" : 9}, {
+	 "imageName" : "pasta",
+	 "name" : "Nudeln & Teigwaren",
+	 "sortOrder" : 2,
+	 "id" : 7}, {
+	 "imageName" : "produce",
+	 "name" : "Obst & Gemüse",
+	 "sortOrder" : 3,
+	 "id" : 21}, {
+	 "imageName" : "bread",
+	 "name" : "Brot & Kuchen",
+	 "sortOrder" : 4,
+	 "id" : 4}, {
+	 "imageName" : "seafood",
+	 "name" : "Fisch & Meeresfrüchte",
+	 "sortOrder" : 5,
+	 "id" : 23}, {
+	 "imageName" : "meat",
+	 "name" : "Fleisch & Wurst",
+	 "sortOrder" : 6,
+	 "id" : 22}, {
+	 "imageName" : "dairy",
+	 "name" : "Milchprodukte",
+	 "sortOrder" : 7,
+	 "id" : 1}, {
+	 "imageName" : "frozen",
+	 "name" : "Tiefgekühltes",
+	 "sortOrder" : 8,
+	 "id" : 2}, {
+	 "imageName" : "dressings",
+	 "name" : "Dressings & Öle",
+	 "sortOrder" : 9,
+	 "id" : 10}, {
+	 "imageName" : "spices",
+	 "name" : "Soßen & Gewürze",
+	 "sortOrder" : 10,
+	 "id" : 11}, {
+	 "imageName" : "prepared",
+	 "name" : "Fertiggerichte",
+	 "sortOrder" : 11,
+	 "id" : 25}, {
+	 "imageName" : "can",
+	 "name" : "Suppen & Konserven",
+	 "sortOrder" : 12,
+	 "id" : 8}, {
+	 "imageName" : "deli",
+	 "name" : "Delikatessen",
+	 "sortOrder" : 13,
+	 "id" : 24}, {
+	 "imageName" : "natural",
+	 "name" : "Naturprodukte",
+	 "sortOrder" : 14,
+	 "id" : 14}, {
+	 "imageName" : "world",
+	 "name" : "Internationales",
+	 "sortOrder" : 15,
+	 "id" : 20}, {
+	 "imageName" : "brezel",
+	 "name" : "Süßigkeiten",
+	 "sortOrder" : 16,
+	 "id" : 6}, {
+	 "imageName" : "beauty",
+	 "name" : "Kosmetik & Körperpflege",
+	 "sortOrder" : 17,
+	 "id" : 26}, {
+	 "imageName" : "infant",
+	 "name" : "Kinder- und Babywaren",
+	 "sortOrder" : 18,
+	 "id" : 13}, {
+	 "imageName" : "laundry",
+	 "name" : "Reinigungsmittel",
+	 "sortOrder" : 19,
+	 "id" : 16}, {
+	 "imageName" : "garden",
+	 "name" : "Haus & Garten",
+	 "sortOrder" : 20,
+	 "id" : 17}, {
+	 "imageName" : "office",
+	 "name" : "Schule und Büro",
+	 "sortOrder" : 21,
+	 "id" : 18}, {
+	 "imageName" : "entertainment",
+	 "name" : "Unterhaltung",
+	 "sortOrder" : 22,
+	 "id" : 19}, {
+	 "imageName" : "alcohol",
+	 "name" : "Spirituosen",
+	 "sortOrder" : 23,
+	 "id" : 12}, {
+	 "imageName" : "beverages",
+	 "name" : "Getränke",
+	 "sortOrder" : 24,
+	 "id" : 3}, {
+	 "imageName" : "pet",
+	 "name" : "Tierbedarf",
+	 "sortOrder" : 25,
+	 "id" : 15}, {
+	 "imageName" : "cigarettes",
+	 "name" : "Tabakwaren",
+	 "sortOrder" : 26,
+	 "id" : 27}]}
