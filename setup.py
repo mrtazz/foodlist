@@ -26,6 +26,7 @@ setup(name = "foodlist",
       url = "http://github.com/mrtazz/foodlist",
       packages = ["foodlist"],
       scripts=["bin/export_foodlist.py"],
+      package_data = ["data/groceries.json", "data/groceries.mustache"],
       license = "MIT",
       classifiers = (
                 "Development Status :: 4 - Beta",
