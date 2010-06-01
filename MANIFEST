@@ -4,3 +4,5 @@ setup.py
 bin/export_foodlist.py
 foodlist/__init__.py
 foodlist/foodlist.py
+foodlist/data/groceries.json
+foodlist/data/groceries.mustache

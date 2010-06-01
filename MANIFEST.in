@@ -1,1 +1,2 @@
 include HISTORY.rst README.rst
+recursive-include foodlist/data groceries.mustache groceries.json
