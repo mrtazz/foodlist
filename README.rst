@@ -36,9 +36,8 @@ Or if you must:
 
     easy_install foodlist
 
-This does not install the example data from the data folder, however. They are
-working examples, but I don't think they are useful enough to be bundled. If
-you want to use or modify these examples, feel free to do this.
+This also installs the example data (template and base data) into
+the data folder in site-packages.
 
 Usage:
 -------
@@ -103,17 +102,6 @@ Then add it to the listformats dict:
 
 And that's about it.
 
-Caveats:
---------
-Since I don't know if it is okay (license-wise) to bundle json data
-from Groceries.app here, no data is included. However it is rather
-easy to get a json dump yourself. Just export a shopping list from
-Groceries.app and search in the plain email text for:
-
-  groceries://import?from=YOURIPHONE&amp;data=
-
-The part after data is the json data which needs to be fed to the application.
-
 TODO:
 ------
 * more (or any for that matter) test cases
@@ -121,6 +109,7 @@ TODO:
 
 Thanks:
 -------
-Sophia Teutschler for Groceries.app.
+Sophia Teutschler for Groceries.app and letting me include the json
+base data.
 
 .. _Groceries.app: http://www.sophiestication.com/groceries/
