@@ -1,8 +1,7 @@
-bakingstuff:
-- mehl
-- zucker
-- eier
-gemuese:
-- apfel
-- birne
-- banane
+produce:
+- tomatoes
+- carrots
+other:
+- noodles
+- bread
+- orange juice
